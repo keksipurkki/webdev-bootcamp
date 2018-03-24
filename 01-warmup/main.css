@@ -1,0 +1,80 @@
+/* The styles  */
+
+:root {
+    --on: gold;
+    --off: #ccc;
+    --switch: black;
+    --switch-width: 26px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.bulb,
+.switch {
+    display: block;
+}
+
+.bulb {
+    fill: transparent;
+    stroke: var(--off);
+    stroke-width: 1px;
+    height: 20em;
+    width: 20em;
+}
+
+.bulb.on {
+    stroke: var(--on);
+    filter: drop-shadow(0px 5px 5px var(--on));
+}
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+    border: 2px solid var(--switch);
+    background-color: white;
+}
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--switch-width);
+    width: var(--switch-width);
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--switch);
+    transition: .4s;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--switch);
+}
+
+input:checked+.slider:before {
+    transform: translateX(var(--switch-width));
+}

@@ -1,0 +1,84 @@
+/* The styles  */
+
+body {
+  /* http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-030 */
+  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+a:visited {
+  text-decoration: none;
+  color: currentColor;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+h1, h2, h3 {
+  margin: calc(2rem - .14285em) 0 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  padding: 3em;
+}
+
+.nav-links {
+  margin: 0.5em;
+}
+
+.nav-links a + a {
+  margin-left: 1em;
+}
+
+#home .wrapper .grid {
+  max-width: 960px;
+  width: 80%;
+  margin 0 auto;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#home .grid-item {
+  margin: 0.125em;
+}
+
+#home .country {
+  font-size: 4em;
+}
+
+#country .country {
+  font-size: 12em;
+}
+
+.home-link {
+  position: absolute;
+  top: 10;
+  left: 10;
+  margin: 1em;
+  text-transform: uppercase;
+}
