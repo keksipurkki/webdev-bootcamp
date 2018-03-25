@@ -4,7 +4,7 @@ $countries = require('countries.php');
 
 return function($countryCode, $values) use($countries) {
 
-  list($flagEmoji, $name) = $values; 
+  list($flagEmoji, $name) = $values;
 
   // Programming error
   if (!isset($countries[$countryCode])) {
@@ -28,7 +28,7 @@ return function($countryCode, $values) use($countries) {
 
   <body id="country">
       <a class="home-link" href="/">Home</a>
-      <div class="wrapper"> 
+      <div class="wrapper">
           <ul>
             <?php country($countryCode, $values) ?>
           </ul>
