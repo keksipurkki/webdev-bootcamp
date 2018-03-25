@@ -5,6 +5,7 @@
     --off: #ccc;
     --switch: black;
     --switch-width: 26px;
+    --bulb-size: 20em;
 }
 
 .wrapper {
@@ -15,22 +16,18 @@
     min-height: 100vh;
 }
 
-.bulb,
-.switch {
-    display: block;
-}
-
 .bulb {
     fill: transparent;
     stroke: var(--off);
     stroke-width: 1px;
-    height: 20em;
-    width: 20em;
+    height: var(--bulb-size);
+    width: var(--bulb-size);
 }
 
 .bulb.on {
     stroke: var(--on);
     filter: drop-shadow(0px 5px 5px var(--on));
+    fill: yellow;
 }
 
 /* The switch - the box around the slider */
