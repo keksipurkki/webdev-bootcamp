@@ -33,7 +33,7 @@ function to_clock_numeral($number) {
 }
 
 function to_path($word) {
-  return sprintf("file %s/words/%s.wav", __DIR__, $word);
+  return sprintf("file %s/words/%s.wav", __DIR__, escapeshellarg($word));
 }
 
 function get_sentence($date) {
@@ -43,7 +43,13 @@ function get_sentence($date) {
 
   $sentence = ["time", "is"];
 
-  if ($minutes == 30) {
+  if ($minutes == 0) {
+
+    $sentence = array_merge($sentence, to_clock_numeral($hour));
+    array_push($sentence, "o'clock", "sharp");
+    return $sentence;
+  
+  } else if ($minutes == 30) {
 
     $sentence = array_merge($sentence, ["half", "past"]);
 
@@ -71,14 +77,14 @@ if (isset($_GET["tz"]) and in_array($_GET["tz"], timezone_identifiers_list())) {
   date_default_timezone_set("Europe/Helsinki");
 }
 
-$sentence = get_sentence(new DateTime());
-error_log(implode(" ", $sentence));
+$date = php_sapi_name() == "cli" ? $argv[1] : "now";
 
+$sentence = get_sentence(new DateTime($date));
 $tmpfile = tmpfile();
 $path = stream_get_meta_data($tmpfile)['uri'];
 $tokens = array_map(to_path, $sentence);
-file_put_contents($path, implode("\n", $tokens));
 
+file_put_contents($path, implode("\n", $tokens));
 header("Content-Type: audio/mpeg");
 header("Cache-Control: no-cache");
 passthru("ffmpeg -hide_banner -loglevel panic -f concat -safe 0 -i $path -f mp3 pipe:1");
