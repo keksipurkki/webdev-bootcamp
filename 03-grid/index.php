@@ -2,22 +2,16 @@
 
 require_once("functions.php");
 
-$countries = require('countries.php');
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-function is_home($path) {
-  return $path === "/";
-}
+if (is_country($path)) {
 
-$country = trim($path, "/");
-
-if ($countries[$country]) {
-
-  (require_once("country.php"))($country, $countries[$country]);
+  $countryCode = trim($path, "/");
+  (require_once("country.php"))($countryCode, $countries[$countryCode]);
 
 } else if (is_home($path)) {
 
-  require_once("home.php");
+  (require_once("home.php"))($countries);
 
 } else {
 

@@ -44,7 +44,12 @@ function main_css($project) {
 }
 
 function start($project, $host = "localhost", $port = 8080) {
-  shell_exec("php -S $host:$port -t $project & open http://$host:$port");
+  $sequence = [
+    "php -S $host:$port -t $project & disown $!",
+    "sleep 3",
+    "open http://$host:$port"
+  ];
+  shell_exec(implode(" && ", $sequence));
 }
 
 /* Start */

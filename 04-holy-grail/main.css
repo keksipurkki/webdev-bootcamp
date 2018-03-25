@@ -1,3 +1,127 @@
+:root {
+  --header-height: 6em;
+  --footer-height: 3em;
+}
 
-/* The styles  */
+body {
+  /* http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-030 */
+  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+  color: white;
+}
 
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+h1, h2, h3 {
+  margin: calc(2rem - .14285em) 0 1rem;
+}
+
+.main {
+  display: flex;
+  flex-direction:column;
+  height: 100vh;
+}
+
+
+.footer {
+  position:fixed;
+  bottom: 0;
+  left:0;
+  right:0;
+  background-color: transparent;
+  display: flex;
+}
+
+.header {
+  background-image: linear-gradient(to right, Teal 20%, purple 70%, red, green);
+}
+
+.sidebar {
+  background-color: Khaki;
+}
+
+.page {
+  background-color: Teal;
+}
+
+.header, .footer {
+  flex:0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  min-height: var(--header-height);
+}
+
+.footer {
+  min-height: var(--footer-height);
+}
+
+.page-boundary {
+  flex: 4;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.page {
+  min-height: 150vh;
+  overflow-y: auto;
+}
+
+/* Page contains textual content */
+.page {
+  padding: 5% 10%;
+}
+
+.page h1 {
+  text-align: center;
+  font-size: 3em;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin-bottom: calc(3rem - .14285em);
+}
+
+.page img {
+  float: right;
+  max-width: 430px;
+  margin: 1em;
+}
+
+.page p {
+  max-width: 960px;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.right-align {
+  margin-left: auto;
+}
+
+#scroll-up {
+  -webkit-appearance: none;
+  background: transparent;
+  color: currentColor;
+  cursor: pointer;
+  border:none;
+  outline: none;
+  font-size: 3em;
+  padding: 12px;
+}

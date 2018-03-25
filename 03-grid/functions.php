@@ -25,7 +25,7 @@ function previous_country($countryCode) {
 }
 
 function country($countryCode, $value) {
-  list($flagEmoji, $name) = $value; 
+  list($flagEmoji, $name) = $value;
 ?>
   <li class="grid-item country" aria-label="<?= $countryCode ?>">
       <a href="<?= "/{$countryCode}" ?>" title="<?= $name ?>">
@@ -35,4 +35,11 @@ function country($countryCode, $value) {
 <?php
 }
 
+function is_home($path) {
+  return $path === "/";
+}
 
+function is_country($path) {
+  global $countries;
+  return isset($countries[trim($path, "/")]);
+}
