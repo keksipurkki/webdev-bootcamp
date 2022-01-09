@@ -48,7 +48,7 @@ function get_sentence($date) {
     $sentence = array_merge($sentence, to_clock_numeral($hour));
     array_push($sentence, "o'clock", "sharp");
     return $sentence;
-  
+
   } else if ($minutes == 30) {
 
     $sentence = array_merge($sentence, ["half", "past"]);
@@ -82,7 +82,7 @@ $date = php_sapi_name() == "cli" ? $argv[1] : "now";
 $sentence = get_sentence(new DateTime($date));
 $tmpfile = tmpfile();
 $path = stream_get_meta_data($tmpfile)['uri'];
-$tokens = array_map(to_path, $sentence);
+$tokens = array_map("to_path", $sentence);
 
 file_put_contents($path, implode("\n", $tokens));
 header("Content-Type: audio/mpeg");
